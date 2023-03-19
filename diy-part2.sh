@@ -12,3 +12,8 @@
 
 # Modify default IP
 #sed -i 's/192.168.1.1/192.168.50.5/g' package/base-files/files/bin/config_generate
+
+cd feeds/luci/themes
+mv luci-theme-bootstrap luci-bak-bootstrap
+rm -rf luci-theme-*
+mv luci-bak-bootstrap luci-theme-bootstrap

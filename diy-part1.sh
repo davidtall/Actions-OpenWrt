@@ -62,3 +62,4 @@ git clone --depth 1 https://github.com/brvphoenix/luci-app-wrtbwmon wrtbwmon1 &&
 git clone --depth 1 https://github.com/brvphoenix/wrtbwmon wrtbwmon2 && mvdir wrtbwmon2
 
 sed -i 's/+mosdns-v5/+mosdns/g' luci-app-mosdns/Makefile
+rm -rf upx*

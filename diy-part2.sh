@@ -22,4 +22,6 @@ svn export https://github.com/coolsnowwolf/packages/trunk/lang/golang feeds/pack
 
 rm -rf feeds/luci/applications/luci-app-{passwall,mosdns,dockerman}
 rm -rf feeds/packages/net/{shadowsocks*,xray*,v2ray*,mosdns,aria*}
-cp -Rp package/small-package/{aria*,shadowsocks*,xray*,v2ray*,mosdns} feeds/packages/net/
+#cp -Rp package/small/{aria*,shadowsocks*,xray*,v2ray*,mosdns} feeds/packages/net/
+
+#sed -i 's/+uhttpd +uhttpd-mod-ubus //g' feeds/luci/collections/luci/Makefile

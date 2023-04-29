@@ -18,6 +18,17 @@ mv -n `find $1/* -maxdepth 0 -type d` ./
 rm -rf $1
 }
 
+DIR=$1
+[ ! $DIR ] && DIR='openwrt'
+[ $2 ] && {
+  CMD="git clone $2 $DIR"
+  [ $3 ] && CMD="$CMD -b $3"
+  `$CMD`
+}
+
+pushd $DIR > /dev/null
+
+
 pushd package > /dev/null
 rm -rf luci-theme*
 
@@ -44,3 +55,18 @@ git clone https://github.com/gngpp/luci-theme-design.git
 #sed -i 's/+mosdns-v5/+mosdns/g' luci-app-mosdns/Makefile
 popd
 popd
+./scripts/feeds update -a && ./scripts/feeds install -a
+
+#mv feeds/luci/themes/luci-theme-bootstrap feeds/luci/themes/luci-bak-bootstrap
+#rm -rf feeds/luci/themes/luci-theme-*
+#mv feeds/luci/themes/luci-bak-bootstrap feeds/luci/themes/luci-theme-bootstrap
+
+rm -rf feeds/packages/lang/golang
+svn export https://github.com/coolsnowwolf/packages/trunk/lang/golang feeds/packages/lang/golang
+
+rm -rf feeds/luci/applications/luci-app-{passwall,mosdns,dockerman}
+rm -rf feeds/packages/net/{shadowsocks*,xray*,v2ray*,mosdns,aria*}
+#cp -Rp package/small/{aria*,shadowsocks*,xray*,v2ray*,mosdns} feeds/packages/net/
+
+#sed -i 's/+uhttpd +uhttpd-mod-ubus //g' feeds/luci/collections/luci/Makefile
+

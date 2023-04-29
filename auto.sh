@@ -57,9 +57,9 @@ popd
 popd
 ./scripts/feeds update -a && ./scripts/feeds install -a
 
-#mv feeds/luci/themes/luci-theme-bootstrap feeds/luci/themes/luci-bak-bootstrap
-#rm -rf feeds/luci/themes/luci-theme-*
-#mv feeds/luci/themes/luci-bak-bootstrap feeds/luci/themes/luci-theme-bootstrap
+mv feeds/luci/themes/luci-theme-bootstrap feeds/luci/themes/luci-bak-bootstrap
+rm -rf feeds/luci/themes/luci-theme-*
+mv feeds/luci/themes/luci-bak-bootstrap feeds/luci/themes/luci-theme-bootstrap
 
 rm -rf feeds/packages/lang/golang
 svn export https://github.com/coolsnowwolf/packages/trunk/lang/golang feeds/packages/lang/golang
